@@ -139,6 +139,7 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 			// 加载Bean定义信息
 			loadBeanDefinitions(beanFactory);
 			// 为beanFactory赋值
+			// 这一步把上下文Application和DefaultListableBeanFactory组合在一起
 			synchronized (this.beanFactoryMonitor) {
 				this.beanFactory = beanFactory;
 			}
