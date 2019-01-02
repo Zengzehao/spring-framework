@@ -107,10 +107,10 @@ class ConstructorResolver {
 	 * <p>This corresponds to constructor injection: In this mode, a Spring
 	 * bean factory is able to host components that expect constructor-based
 	 * dependency resolution.
-	 * @param beanName the name of the bean
-	 * @param mbd the merged bean definition for the bean
-	 * @param chosenCtors chosen candidate constructors (or {@code null} if none)
-	 * @param explicitArgs argument values passed in programmatically via the getBean method,
+	 * @param beanName the name of the bean bean的名字
+	 * @param mbd the merged bean definition for the bean bean定义
+	 * @param chosenCtors chosen candidate constructors (or {@code null} if none) 构造函数
+	 * @param explicitArgs argument values passed in programmatically via the getBean method, 确切的参数
 	 * or {@code null} if none (-> use constructor argument values from bean definition)
 	 * @return a BeanWrapper for the new instance
 	 */
@@ -120,10 +120,14 @@ class ConstructorResolver {
 		BeanWrapperImpl bw = new BeanWrapperImpl();
 		this.beanFactory.initBeanWrapper(bw);
 
+		// 构造函数去用
 		Constructor<?> constructorToUse = null;
+		// 参数Holder
 		ArgumentsHolder argsHolderToUse = null;
+		// 参数
 		Object[] argsToUse = null;
 
+		// 直接赋值
 		if (explicitArgs != null) {
 			argsToUse = explicitArgs;
 		}
@@ -281,6 +285,7 @@ class ConstructorResolver {
 			}
 		}
 
+		//实例化
 		Assert.state(argsToUse != null, "Unresolved constructor arguments");
 		bw.setBeanInstance(instantiate(beanName, mbd, constructorToUse, argsToUse));
 		return bw;
@@ -372,6 +377,7 @@ class ConstructorResolver {
 	 * @param explicitArgs argument values passed in programmatically via the getBean
 	 * method, or {@code null} if none (-> use constructor argument values from bean definition)
 	 * @return a BeanWrapper for the new instance
+	 * 初始化用工厂方法
 	 */
 	public BeanWrapper instantiateUsingFactoryMethod(
 			String beanName, RootBeanDefinition mbd, @Nullable Object[] explicitArgs) {
@@ -379,10 +385,13 @@ class ConstructorResolver {
 		BeanWrapperImpl bw = new BeanWrapperImpl();
 		this.beanFactory.initBeanWrapper(bw);
 
+		// factoryBean
 		Object factoryBean;
+		// factoryClass
 		Class<?> factoryClass;
 		boolean isStatic;
 
+		// 工厂Bean的名字
 		String factoryBeanName = mbd.getFactoryBeanName();
 		if (factoryBeanName != null) {
 			if (factoryBeanName.equals(beanName)) {
@@ -407,8 +416,10 @@ class ConstructorResolver {
 			isStatic = true;
 		}
 
+		// factoryMethodToUse
 		Method factoryMethodToUse = null;
 		ArgumentsHolder argsHolderToUse = null;
+		// 构造函数的参数
 		Object[] argsToUse = null;
 
 		if (explicitArgs != null) {
@@ -431,6 +442,7 @@ class ConstructorResolver {
 			}
 		}
 
+		// 如果factoryMethodToUse 或者 argsToUse为null
 		if (factoryMethodToUse == null || argsToUse == null) {
 			// Need to determine the factory method...
 			// Try all methods with this name to see if they match the given arguments.
@@ -608,6 +620,7 @@ class ConstructorResolver {
 		return bw;
 	}
 
+	// 初始化
 	private Object instantiate(String beanName, RootBeanDefinition mbd,
 			@Nullable Object factoryBean, Method factoryMethod, Object[] args) {
 
