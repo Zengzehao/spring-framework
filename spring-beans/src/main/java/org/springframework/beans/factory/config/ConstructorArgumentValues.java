@@ -33,7 +33,7 @@ import org.springframework.util.ObjectUtils;
 
 /**
  * Holder for constructor argument values, typically as part of a bean definition.
- *
+ * 构造器函数的持有者，通常做为bean定义的一部分
  * <p>Supports values for a specific index in the constructor argument list
  * as well as for generic argument matches by type.
  *
