@@ -45,6 +45,7 @@ import java.beans.PropertyDescriptor;
  * @see org.springframework.beans.factory.BeanFactory
  * @see org.springframework.validation.BeanPropertyBindingResult
  * @see org.springframework.validation.DataBinder#initBeanPropertyAccess()
+ * Bean的包装类
  */
 public interface BeanWrapper extends ConfigurablePropertyAccessor {
 
