@@ -23,6 +23,8 @@ import org.springframework.lang.Nullable;
  * Can be implemented by {@link org.springframework.beans.factory.BeanFactory}
  * implementations in order to expose their singleton management facility
  * in a uniform manner.
+ * 接口定义了一个注册器对共享的bean实例
+ * 可以通过org.springframework.beans.factory.BeanFactory来暴露他们的单例管理用统一的方式
  *
  * <p>The {@link ConfigurableBeanFactory} interface extends this interface.
  *
