@@ -54,14 +54,17 @@ import org.springframework.util.Assert;
 @SuppressWarnings("serial")
 public class RootBeanDefinition extends AbstractBeanDefinition {
 
+	// bean定义信息持有对象
 	@Nullable
 	private BeanDefinitionHolder decoratedDefinition;
 
 	@Nullable
 	private AnnotatedElement qualifiedElement;
 
+	// 允许缓存
 	boolean allowCaching = true;
 
+	// 工厂方法唯一
 	boolean isFactoryMethodUnique = false;
 
 	@Nullable
@@ -80,9 +83,11 @@ public class RootBeanDefinition extends AbstractBeanDefinition {
 	volatile Method factoryMethodToIntrospect;
 
 	/** Common lock for the four constructor fields below. */
+	// 锁
 	final Object constructorArgumentLock = new Object();
 
 	/** Package-visible field for caching the resolved constructor or factory method. */
+	// 构造器或工厂方法
 	@Nullable
 	Executable resolvedConstructorOrFactoryMethod;
 
@@ -90,6 +95,7 @@ public class RootBeanDefinition extends AbstractBeanDefinition {
 	boolean constructorArgumentsResolved = false;
 
 	/** Package-visible field for caching fully resolved constructor arguments. */
+	// 构造器参数
 	@Nullable
 	Object[] resolvedConstructorArguments;
 
@@ -98,6 +104,7 @@ public class RootBeanDefinition extends AbstractBeanDefinition {
 	Object[] preparedConstructorArguments;
 
 	/** Common lock for the two post-processing fields below. */
+	// 锁
 	final Object postProcessingLock = new Object();
 
 	/** Package-visible field that indicates MergedBeanDefinitionPostProcessor having been applied. */

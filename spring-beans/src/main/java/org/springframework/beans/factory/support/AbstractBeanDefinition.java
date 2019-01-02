@@ -137,10 +137,11 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 	 */
 	public static final String INFER_METHOD = "(inferred)";
 
-
+	// bean class
 	@Nullable
 	private volatile Object beanClass;
 
+	//scope
 	@Nullable
 	private String scope = SCOPE_DEFAULT;
 
@@ -148,10 +149,13 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 
 	private boolean lazyInit = false;
 
+	// 自动装配
 	private int autowireMode = AUTOWIRE_NO;
 
+	// 依赖检查
 	private int dependencyCheck = DEPENDENCY_CHECK_NONE;
 
+	// 依赖的bean名字数组
 	@Nullable
 	private String[] dependsOn;
 
@@ -161,6 +165,7 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 
 	private final Map<String, AutowireCandidateQualifier> qualifiers = new LinkedHashMap<>();
 
+	// 实例的供应者
 	@Nullable
 	private Supplier<?> instanceSupplier;
 
@@ -168,24 +173,31 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 
 	private boolean lenientConstructorResolution = true;
 
+	// 工厂bean名字
 	@Nullable
 	private String factoryBeanName;
 
+	// 工厂bean方法
 	@Nullable
 	private String factoryMethodName;
 
+	// 构造函数的参数值
 	@Nullable
 	private ConstructorArgumentValues constructorArgumentValues;
 
+	// 属性值
 	@Nullable
 	private MutablePropertyValues propertyValues;
 
+	// 覆盖的方法
 	@Nullable
 	private MethodOverrides methodOverrides;
 
+	// 初始化方法名字
 	@Nullable
 	private String initMethodName;
 
+	// 销毁方法名字
 	@Nullable
 	private String destroyMethodName;
 
@@ -193,13 +205,16 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 
 	private boolean enforceDestroyMethod = true;
 
+	// 合成的？
 	private boolean synthetic = false;
 
 	private int role = BeanDefinition.ROLE_APPLICATION;
 
+	// 描述
 	@Nullable
 	private String description;
 
+	// 资源
 	@Nullable
 	private Resource resource;
 
