@@ -30,6 +30,8 @@ import org.springframework.lang.Nullable;
  * interface to be implemented by bean factories that are capable of
  * autowiring, provided that they want to expose this functionality for
  * existing bean instances.
+ * 拓展了BeanFactory。
+ * 自动装配能力
  *
  * <p>This subinterface of BeanFactory is not meant to be used in normal
  * application code: stick to {@link org.springframework.beans.factory.BeanFactory}
@@ -64,6 +66,7 @@ public interface AutowireCapableBeanFactory extends BeanFactory {
 	/**
 	 * Constant that indicates no externally defined autowiring. Note that
 	 * BeanFactoryAware etc and annotation-driven injection will still be applied.
+	 * 没有外部定义的自动装配
 	 * @see #createBean
 	 * @see #autowire
 	 * @see #autowireBeanProperties
@@ -76,6 +79,7 @@ public interface AutowireCapableBeanFactory extends BeanFactory {
 	 * @see #createBean
 	 * @see #autowire
 	 * @see #autowireBeanProperties
+	 * 通过名字自动装配
 	 */
 	int AUTOWIRE_BY_NAME = 1;
 
@@ -85,6 +89,7 @@ public interface AutowireCapableBeanFactory extends BeanFactory {
 	 * @see #createBean
 	 * @see #autowire
 	 * @see #autowireBeanProperties
+	 * 通过类型自动装配
 	 */
 	int AUTOWIRE_BY_TYPE = 2;
 
@@ -93,6 +98,7 @@ public interface AutowireCapableBeanFactory extends BeanFactory {
 	 * can be satisfied (involves resolving the appropriate constructor).
 	 * @see #createBean
 	 * @see #autowire
+	 * 最贪婪的构造函数自动装配
 	 */
 	int AUTOWIRE_CONSTRUCTOR = 3;
 
@@ -126,6 +132,7 @@ public interface AutowireCapableBeanFactory extends BeanFactory {
 
 	/**
 	 * Fully create a new bean instance of the given class.
+	 * 完全创建给定类的新bean实例
 	 * <p>Performs full initialization of the bean, including all applicable
 	 * {@link BeanPostProcessor BeanPostProcessors}.
 	 * <p>Note: This is intended for creating a fresh instance, populating annotated
@@ -141,6 +148,7 @@ public interface AutowireCapableBeanFactory extends BeanFactory {
 	/**
 	 * Populate the given bean instance through applying after-instantiation callbacks
 	 * and bean property post-processing (e.g. for annotation-driven injection).
+	 * 通过应用after-instantiation回调和bean属性后处理来填充给定的bean实例
 	 * <p>Note: This is essentially intended for (re-)populating annotated fields and
 	 * methods, either for new instances or for deserialized instances. It does
 	 * <i>not</i> imply traditional by-name or by-type autowiring of properties;
