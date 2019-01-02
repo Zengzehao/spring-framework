@@ -36,6 +36,7 @@ import org.springframework.lang.Nullable;
  * @author Juergen Hoeller
  * @since 1.1
  * @see org.springframework.core.io.Resource
+ * Bean定义阅读器
  */
 public interface BeanDefinitionReader {
 
@@ -80,6 +81,7 @@ public interface BeanDefinitionReader {
 	 * (without explicit bean name specified).
 	 */
 	BeanNameGenerator getBeanNameGenerator();
+
 
 
 	/**
